@@ -1,86 +1,90 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const calculateBtn = document.getElementById('calculate-btn');
-  const resultDiv = document.getElementById('result');
+  // Get Elements
+  const originalPriceInput = document.getElementById('original-price');
+  const discountPercentInput = document.getElementById('discount-percent');
+  const maxCapInput = document.getElementById('max-cap');
+  const extraChargesInput = document.getElementById('extra-charges');
+
+  const quickFeeButtons = document.querySelectorAll('.quick-fee-btn');
+
+  const resultDisplay = document.getElementById('result-display');
   const finalPriceSpan = document.getElementById('final-price');
-  const savedAmountSpan = document.getElementById('saved-amount');
-  const realDiscountSpan = document.getElementById('real-discount');
-  const capWarningSpan = document.getElementById('cap-warning');
+  const effectiveDiscountBadge = document.getElementById('effective-discount-badge');
+  const calculationLogicDiv = document.getElementById('calculation-logic'); // Optional debug/info
 
-  calculateBtn.addEventListener('click', () => {
-    // 1. Get Inputs & Handle Zero/Negative Cases
-    const originalPrice = Math.max(0, parseFloat(document.getElementById('original-price').value));
-    const discountPercent = Math.max(0, parseFloat(document.getElementById('discount-percent').value));
-    const maxCapVal = document.getElementById('max-cap').value;
-    const maxCap = maxCapVal === '' ? Infinity : Math.max(0, parseFloat(maxCapVal));
-    
-    // Optional Extras
-    const extraCharges = Math.max(0, parseFloat(document.getElementById('extra-charges').value) || 0);
-    const couponDiscount = Math.max(0, parseFloat(document.getElementById('coupon-discount').value) || 0);
+  // Function to calculate and update UI
+  function calculate() {
+    const originalPrice = parseFloat(originalPriceInput.value) || 0;
+    const discountPercent = parseFloat(discountPercentInput.value) || 0;
+    const maxCap = parseFloat(maxCapInput.value) || Infinity; // If empty, no cap i.e. Infinity
+    const extraCharges = parseFloat(extraChargesInput.value) || 0;
 
-    // Validation
-    if (isNaN(originalPrice) || isNaN(discountPercent)) {
-      alert('Please enter valid numbers for Original Price and Discount %.');
+    if (originalPrice <= 0) {
+      // Clear/Reset if no price
+      resultDisplay.classList.remove('active');
       return;
     }
 
-    // 2. Calculate Base Discount
-    let baseDiscountAmount = (originalPrice * discountPercent) / 100;
+    // 1. Calculate Discount Amount
+    let discountAmount = (originalPrice * discountPercent) / 100;
 
-    // 3. Apply Max Cap Logic
-    let actualDiscount = baseDiscountAmount;
-    let isCapped = false;
-
-    if (baseDiscountAmount > maxCap) {
+    // 2. Apply Max Cap
+    let actualDiscount = discountAmount;
+    let capped = false;
+    if (maxCap !== Infinity && discountAmount > maxCap) {
       actualDiscount = maxCap;
-      isCapped = true;
+      capped = true;
     }
 
-    // 4. Calculate Intermediate Price (after primary discount)
-    let priceAfterBaseDiscount = originalPrice - actualDiscount;
+    // 3. Final Price Calculation
+    // Final Price = Original - ActualDiscount + ExtraCharges
+    const finalPrice = originalPrice - actualDiscount + extraCharges;
 
-    // 5. Apply Additional Coupon (Flat Amount)
-    // Ensure we don't go below zero from coupon alone (though technically possible with gift cards, usually not for "discounts")
-    // Let's allow it to go to zero, but not negative for the item price itself before extras? 
-    // Usually coupons reduce item price.
-    let priceAfterCoupon = priceAfterBaseDiscount - couponDiscount;
-    if (priceAfterCoupon < 0) priceAfterCoupon = 0;
-
-    // 6. Add Extra Charges (Shipping, Tax, etc.) - these are added TO the price
-    let finalPrice = priceAfterCoupon + extraCharges;
-
-    // 7. Calculate "Effective" Savings & Discount %
-    // Total Saved = Original - Final. 
-    // Note: If Extra Charges > Discounts, this could be negative (you pay more than original).
-    let totalSaved = originalPrice - finalPrice;
-    
-    // Effective Discount %
-    let effectiveDiscountPercent = 0;
+    // 4. Effective Discount Calculation
+    // Logic: ((OriginalPrice - FinalPrice) / OriginalPrice) * 100
+    // Note: If FinalPrice > OriginalPrice (due to high extra charges), discount is negative.
+    let effectiveDiscount = 0;
     if (originalPrice > 0) {
-      effectiveDiscountPercent = (totalSaved / originalPrice) * 100;
+      effectiveDiscount = ((originalPrice - finalPrice) / originalPrice) * 100;
     }
 
-    // Formatting Output
-    finalPriceSpan.textContent = '$' + finalPrice.toFixed(2);
-    
-    // Handle Saved Amount Display
-    if (totalSaved >= 0) {
-      savedAmountSpan.textContent = '$' + totalSaved.toFixed(2);
-      savedAmountSpan.style.color = 'var(--success-color)';
+    // Update UI
+    resultDisplay.classList.add('active');
+    finalPriceSpan.textContent = '₹' + finalPrice.toFixed(2);
+
+    // Update Badge
+    effectiveDiscountBadge.textContent = effectiveDiscount.toFixed(2) + '%';
+    effectiveDiscountBadge.className = 'badge'; // Reset classes
+    if (effectiveDiscount > 10) {
+      effectiveDiscountBadge.classList.add('success'); // Green
+      effectiveDiscountBadge.style.backgroundColor = '#4caf50'; // Ensure style applied
     } else {
-      savedAmountSpan.textContent = '-$' + Math.abs(totalSaved).toFixed(2) + ' (Extra Cost)';
-      savedAmountSpan.style.color = 'var(--accent-color)';
+      effectiveDiscountBadge.classList.add('warning'); // Orange
+      effectiveDiscountBadge.style.backgroundColor = '#ff9800'; // Ensure style applied
     }
+  }
 
-    realDiscountSpan.textContent = effectiveDiscountPercent.toFixed(2);
-
-    // Handle Warning Icon
-    if (isCapped) {
-      capWarningSpan.classList.remove('hidden');
-      capWarningSpan.title = `Discount capped at $${maxCap}! Original discount was $${baseDiscountAmount.toFixed(2)}`;
-    } else {
-      capWarningSpan.classList.add('hidden');
-    }
-
-    resultDiv.classList.remove('hidden');
+  // Event Listeners for Inputs
+  const inputs = [originalPriceInput, discountPercentInput, maxCapInput, extraChargesInput];
+  inputs.forEach(input => {
+    input.addEventListener('input', calculate);
   });
+
+  // Event Listeners for Quick Fees
+  quickFeeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const feeToAdd = parseFloat(btn.getAttribute('data-value'));
+      const currentCharges = parseFloat(extraChargesInput.value) || 0;
+      extraChargesInput.value = (currentCharges + feeToAdd).toFixed(2);
+      calculate(); // Recalculate immediately
+    });
+  });
+
+  // Optional: Auto-select text on focus for easier editing
+  inputs.forEach(input => {
+    input.addEventListener('focus', function () {
+      this.select();
+    });
+  });
+
 });

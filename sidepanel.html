@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discount Detective</title>
+    <link rel="stylesheet" href="popup.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            margin: 0;
+            padding: 16px;
+            width: 100%;
+            height: 100vh;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 12px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+            /* Important for width: 100% */
+        }
+
+        input[type="number"]:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+        }
+
+        /* Quick Fees Buttons */
+        .quick-fees-container {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .quick-fee-btn {
+            flex: 1;
+            padding: 6px;
+            font-size: 12px;
+            background-color: #e0e0e0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .quick-fee-btn:hover {
+            background-color: #d0d0d0;
+        }
+
+        /* Results Display */
+        #result-display {
+            margin-top: 24px;
+            padding: 16px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            opacity: 0.5;
+            /* Default inactive state */
+            transition: opacity 0.3s;
+        }
+
+        #result-display.active {
+            opacity: 1;
+        }
+
+        .result-row {
+            margin-bottom: 8px;
+        }
+
+        .result-label {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .result-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .badge.orange {
+            background-color: #ff9800;
+        }
+
+        .badge.green {
+            background-color: #4caf50;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>🕵️ Discount Detective</h2>
+
+        <!-- Speed Layout: Tab Index Optimized -->
+        <div class="input-group">
+            <label for="original-price">Original Price</label>
+            <input type="number" id="original-price" placeholder="0.00" tabindex="1" autofocus>
+        </div>
+
+        <div class="input-group">
+            <label for="discount-percent">Discount %</label>
+            <input type="number" id="discount-percent" placeholder="0" tabindex="2">
+        </div>
+
+        <div class="input-group">
+            <label for="max-cap">Max Cap (Optional)</label>
+            <input type="number" id="max-cap" placeholder="No Limit" tabindex="3">
+        </div>
+
+        <div class="input-group">
+            <label for="extra-charges">Extra Charges</label>
+            <input type="number" id="extra-charges" placeholder="0.00" tabindex="4">
+
+            <div class="quick-fees-container">
+                <button class="quick-fee-btn" data-value="10">+₹10</button>
+                <button class="quick-fee-btn" data-value="49">+₹49</button>
+                <button class="quick-fee-btn" data-value="99">+₹99</button>
+            </div>
+        </div>
+
+        <!-- Result Display -->
+        <div id="result-display">
+            <div class="result-row">
+                <div class="result-label">Effective Discount</div>
+                <div id="effective-discount-badge" class="badge">-</div>
+            </div>
+
+            <div class="result-row">
+                <div class="result-label">Final Price</div>
+                <div class="result-value" id="final-price">-</div>
+            </div>
+            <div class="result-row">
+                <div class="result-label">Logic</div>
+                <div id="calculation-logic" style="font-size: 12px; color: #888;"></div>
+            </div>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+
+</html>
