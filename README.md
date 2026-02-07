@@ -10,7 +10,7 @@
 
 ## 🚀 Features
 * **The "Real" Calculator:** Instantly see if a "50% Off" coupon with a ₹100 cap is actually worth it.
-* **Side Panel Mode:** Opens next to your shopping tab (Amazon/Flipkart) so you can compare deals without switching windows.
+* **Side Panel Mode:** Opens next to your shopping tab so you can compare deals without switching windows.
 * **Privacy First:** No tracking, no servers, no data collection. Everything runs locally on your device.
 * **Offline Ready:** Works perfectly without an internet connection.
 
@@ -30,7 +30,7 @@
 4.  Click **Load Unpacked** and select the folder.
 
 ## 🛠 Usage
-1.  Open an Amazon or Flipkart product page.
+1.  Open any ecommerce product page or billing page.
 2.  Click the extension icon (or open the Side Panel).
 3.  Enter the **Original Price** and the advertised **Discount %**.
 4.  *(Crucial Step)* Enter the **Max Cap** (e.g., if the coupon says "Up to ₹100").
@@ -53,9 +53,9 @@ Contributions are welcome! Whether it's fixing a bug or improving the UI.
 This project is licensed under the **GPL-3.0 License** - see the [LICENSE](LICENSE) file for details.
 
 ## ☕ Support the Developer
-I build free, open-source tools for the community. If this extension saved you money on your last order, consider buying me a coffee!
+If this extension saved you money on your last order, consider buying me a coffee!
 
-<a href="https://www.buymeacoffee.com/YOUR_USERNAME" target="_blank">
+<a href="https://www.buymeacoffee.com/moiz117" target="_blank">
   <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" >
 </a>
 
