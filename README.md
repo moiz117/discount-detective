@@ -1,62 +1,82 @@
 # 🕵️‍♂️ Discount Detective
 
-> **Don't fall for "Up to 80% OFF". Calculate the *real* savings.**
+> **The Privacy-First, Universal Discount Calculator for Smart Shoppers.**
+> *Works on Amazon, Flipkart, Zomato, Swiggy, and 100% of the web.*
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
-![License](https://img.shields.io/badge/license-GPLv3-green.svg)
-![Privacy](https://img.shields.io/badge/privacy-100%25-success.svg)
+![Version](https://img.shields.io/badge/version-1.0.0-blue.svg) ![License](https://img.shields.io/badge/license-MIT-green.svg) ![Privacy](https://img.shields.io/badge/privacy-100%25%20local-success)
 
-**Discount Detective** is a lightweight, privacy-first browser extension that helps you see through marketing math. It calculates the **Effective Discount** by accounting for "Max Discount" caps, shipping fees, and hidden charges that retailers often bury in fine print.
+## 🚨 The Problem: "Marketing Math"
+Online stores love to trick you. They scream **"50% OFF"** in big letters but hide a tiny **"Up to ₹50"** cap in the fine print.
+* **The Trap:** You think you're saving half the price.
+* **The Reality:** You're saving barely 5%.
 
-## 🚀 Features
-* **The "Real" Calculator:** Instantly see if a "50% Off" coupon with a ₹100 cap is actually worth it.
-* **Side Panel Mode:** Opens next to your shopping tab so you can compare deals without switching windows.
-* **Privacy First:** No tracking, no servers, no data collection. Everything runs locally on your device.
-* **Offline Ready:** Works perfectly without an internet connection.
+## ✅ The Solution
+**Discount Detective** is a manual utility that sits in your browser's Side Panel. It helps you instantly verify the *real* value of any coupon or deal by accounting for hidden caps and shipping fees.
 
-## 📦 Installation
+**It works everywhere:**
+* 🛒 **E-commerce:** Amazon, Flipkart, Myntra, Ajio, Nike.
+* 🍔 **Food Delivery:** Zomato, Swiggy, EatClub.
+* ✈️ **Travel:** MakeMyTrip, Cleartrip.
 
-### From the Web Store (Coming Soon)
-* [Chrome Web Store](#) *(Link pending)*
-* [Firefox Add-ons](#) *(Link pending)*
+---
 
-### For Developers (Load Unpacked)
-1.  Clone this repository:
-    ```bash
-    git clone [https://github.com/YOUR_USERNAME/discount-detective.git](https://github.com/YOUR_USERNAME/discount-detective.git)
-    ```
-2.  Open Chrome and navigate to `chrome://extensions`.
-3.  Toggle **Developer Mode** (top right corner).
-4.  Click **Load Unpacked** and select the folder.
+## ✨ Features
 
-## 🛠 Usage
-1.  Open any ecommerce product page or billing page.
-2.  Click the extension icon (or open the Side Panel).
-3.  Enter the **Original Price** and the advertised **Discount %**.
-4.  *(Crucial Step)* Enter the **Max Cap** (e.g., if the coupon says "Up to ₹100").
-5.  Add any **Shipping/Handling** fees.
-6.  The **Effective Discount** badge will turn **Orange** (Bad Deal) or **Green** (Good Deal) based on the real math.
+* **Universal Compatibility:** Since it relies on your input, it works on literally any website.
+* **🚫 Privacy-First:** No trackers. No ads. No data collection. The extension works 100% offline and never reads your website data.
+* **🧮 Smart Calculation:** Instantly reveals the "Effective Discount Percentage" after caps are applied.
+* **Sidebar Support:** Keep the calculator open side-by-side while you browse different tabs.
+
+---
+
+## 🚀 Usage Guide
+
+1.  **Open the Extension:** Click the icon in your toolbar or open the Chrome Side Panel.
+2.  **Input the Deal:**
+    * **Original Price:** (e.g., ₹500)
+    * **Discount %:** (e.g., 60%)
+    * **Max Cap:** (e.g., ₹120 - *This is the most important field!*)
+3.  **See the Truth:** The calculator will show you the **Real Savings**.
+
+> *Example: A 60% OFF coupon with a ₹120 cap on a ₹500 order is only a **24% discount**. We do the math so you don't get tricked.*
+
+---
+
+## 🔒 Privacy Policy
+
+We believe in radical transparency.
+* **No Data Collection:** We do not track your browsing history or personal data.
+* **No Remote Code:** The extension runs entirely on your device (Client-Side).
+* **No Permissions:** We do not request access to read your website content.
+
+[Read full Privacy Policy](PRIVACY.md)
+
+---
+
+## 🛠️ Installation (Developer Mode)
+
+If you want to run the code from source:
+1.  Clone this repository.
+2.  Open Chrome and go to `chrome://extensions`.
+3.  Enable **Developer Mode** (top right).
+4.  Click **Load Unpacked**.
+5.  Select the folder where you cloned this repo.
+
+---
 
 ## 🤝 Contributing
-Contributions are welcome! Whether it's fixing a bug or improving the UI.
 
-### Guidelines
-1.  **Fork** the repo on GitHub.
-2.  **Clone** the project to your own machine.
-3.  **Commit** changes to your own branch.
-4.  **Push** your work back up to your fork.
-5.  Submit a **Pull Request** so that we can review your changes.
+Found a bug? Want to add a feature?
+1.  Fork the Project
+2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4.  Push to the Branch (`git push origin feature/AmazingFeature`)
+5.  Open a Pull Request
 
-**Note:** Please do not remove the "Support the Dev" link in your PRs unless it is a structural change to the footer.
+---
 
-## 📄 License
-This project is licensed under the **GPL-3.0 License** - see the [LICENSE](LICENSE) file for details.
-
-## ☕ Support the Developer
-If this extension saved you money on your last order, consider buying me a coffee!
-
-<a href="https://www.buymeacoffee.com/moiz117" target="_blank">
-  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" >
-</a>
-
-*Building `Discount Detective` helps fund my next project: an offline-first utility app for motorcycle owners.* 🏍️
+<p align="center">
+  Built with ❤️ by a solo developer to help you save money.
+  <br>
+  <a href="https://www.buymeacoffee.com/moiz117">☕ Buy me a coffee</a>
+</p>
