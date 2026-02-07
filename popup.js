@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const resultDisplay = document.getElementById('result-display');
   const finalPriceSpan = document.getElementById('final-price');
   const effectiveDiscountBadge = document.getElementById('effective-discount-badge');
-  const calculationLogicDiv = document.getElementById('calculation-logic'); // Optional debug/info
+
 
   // Function to calculate and update UI
   function calculate() {
