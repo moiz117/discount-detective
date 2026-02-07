@@ -1,0 +1,16 @@
+# OS Junk
+.DS_Store
+Thumbs.db
+
+# Node / dependencies (if you add them later)
+node_modules/
+npm-debug.log
+
+# IDE Settings (Don't share your VS Code settings)
+.vscode/
+.idea/
+
+# Extension Builds (If you zip it locally)
+*.zip
+*.crx
+dist/
