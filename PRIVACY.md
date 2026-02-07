@@ -15,10 +15,11 @@ We operate under a strict "Privacy is Paramount" principle.
 * **Manual Input Only:** The extension functions purely as a manual calculator. It relies entirely on the data you physically type into the input fields (e.g., Price, Discount %, Max Cap).
 * **Technical Isolation:** All DOM (Document Object Model) access is strictly limited to the **extension's own interface** (the popup or side panel) to manage form inputs and display results. The extension does not have permission to read, modify, or interact with the content of the websites you visit.
 
-## 3. Local Data Usage
-The extension runs 100% locally on your device.
-* **Storage:** We use your browser's local storage (`chrome.storage.local`) solely to save your *calculator preferences* (e.g., the last values you typed in) so you don't have to re-enter them. This data never leaves your computer.
-* **Calculations:** All mathematical calculations happen instantly in your browser's memory. No data is sent to any external server.
+## 3. Local Data Usage (Transient Memory Only)
+The extension operates entirely in your browser's temporary memory (RAM).
+* **No Persistent Storage:** We do not use cookies, local storage, or databases to save your data.
+* **Zero Footprint:** Once you close the extension or refresh the tab, all input data is instantly cleared from memory. Nothing is saved to your device.
+* **In-Memory Calculations:** All mathematical calculations happen instantly in your browser's active session. No data is sent to any external server.
 
 ## 4. Contact Us
 This project is open-source. You can verify our code transparency or report issues directly on our GitHub repository:
