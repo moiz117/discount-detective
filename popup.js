@@ -1,3 +1,5 @@
+import { calculateDiscountLogic } from './logic.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   // Get Elements
   const originalPriceInput = document.getElementById('original-price');
@@ -14,39 +16,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Function to calculate and update UI
   function calculate() {
-    const originalPrice = parseFloat(originalPriceInput.value) || 0;
-    const discountPercent = parseFloat(discountPercentInput.value) || 0;
-    const maxCap = parseFloat(maxCapInput.value) || Infinity; // If empty, no cap i.e. Infinity
-    const extraCharges = parseFloat(extraChargesInput.value) || 0;
+    const originalPrice = originalPriceInput.value;
+    const discountPercent = discountPercentInput.value;
+    const maxCap = maxCapInput.value;
+    const extraCharges = extraChargesInput.value;
 
-    if (originalPrice <= 0) {
+    const result = calculateDiscountLogic(originalPrice, discountPercent, maxCap, extraCharges);
+
+    if (!result) {
       // Clear/Reset if no price
       resultDisplay.classList.remove('active');
       return;
     }
 
-    // 1. Calculate Discount Amount
-    let discountAmount = (originalPrice * discountPercent) / 100;
-
-    // 2. Apply Max Cap
-    let actualDiscount = discountAmount;
-    let capped = false;
-    if (maxCap !== Infinity && discountAmount > maxCap) {
-      actualDiscount = maxCap;
-      capped = true;
-    }
-
-    // 3. Final Price Calculation
-    // Final Price = Original - ActualDiscount + ExtraCharges
-    const finalPrice = originalPrice - actualDiscount + extraCharges;
-
-    // 4. Effective Discount Calculation
-    // Logic: ((OriginalPrice - FinalPrice) / OriginalPrice) * 100
-    // Note: If FinalPrice > OriginalPrice (due to high extra charges), discount is negative.
-    let effectiveDiscount = 0;
-    if (originalPrice > 0) {
-      effectiveDiscount = ((originalPrice - finalPrice) / originalPrice) * 100;
-    }
+    const { finalPrice, effectiveDiscount } = result;
 
     // Update UI
     resultDisplay.classList.add('active');
