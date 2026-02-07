@@ -38,7 +38,7 @@ Online stores love to trick you. They scream **"50% OFF"** in big letters but hi
     * **Max Cap:** (e.g., ₹120 - *This is the most important field!*)
 3.  **See the Truth:** The calculator will show you the **Real Savings**.
 
-> *Example: A 60% OFF coupon with a ₹120 cap on a ₹500 order is actually only a **24% discount**. We do the math so you don't get tricked.*
+> *Example: A 60% OFF coupon with a ₹120 cap on a ₹500 order is only a **24% discount**. We do the math so you don't get tricked.*
 
 ---
 
