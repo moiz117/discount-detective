@@ -53,9 +53,9 @@ Contributions are welcome! Whether it's fixing a bug or improving the UI.
 This project is licensed under the **GPL-3.0 License** - see the [LICENSE](LICENSE) file for details.
 
 ## ☕ Support the Developer
-I build free, open-source tools for the community. If this extension saved you money on your last order, consider buying me a coffee!
+If this extension saved you money on your last order, consider buying me a coffee!
 
-<a href="https://www.buymeacoffee.com/YOUR_USERNAME" target="_blank">
+<a href="https://www.buymeacoffee.com/moiz117" target="_blank">
   <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" >
 </a>
 
