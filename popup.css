@@ -12,7 +12,7 @@
 }
 
 body {
-  width: 350px;
+  width: 550px;
   margin: 0;
   padding: 0;
   font-family: var(--font-family);
@@ -24,7 +24,7 @@ body {
   padding: 20px;
   background-color: var(--bg-color);
   min-height: 100vh;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
 header h1 {
@@ -65,7 +65,8 @@ label {
 
 input {
   width: 100%;
-  padding: 10px 10px 10px 25px; /* Space for symbol */
+  padding: 10px 10px 10px 25px;
+  /* Space for symbol */
   box-sizing: border-box;
   border: 1px solid var(--input-border);
   border-radius: 6px;
@@ -112,8 +113,15 @@ button:active {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hidden {
@@ -147,7 +155,15 @@ button:active {
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
