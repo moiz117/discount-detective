@@ -1,0 +1,9 @@
+{
+    "name": "discount-detective",
+    "version": "1.0.0",
+    "description": "Chrome extension to calculate discounts",
+    "type": "module",
+    "scripts": {
+        "test": "node tests/run_tests.js"
+    }
+}
